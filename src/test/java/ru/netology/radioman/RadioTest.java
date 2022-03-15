@@ -51,6 +51,28 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"-1", "10"})
+    public void nextStationCurrentBelowZeroAndLargerMax(int currentStation) {
+        Radio radio = new Radio();
+
+        int expected = 0;
+
+        int actual = radio.nextStation(currentStation);
+        assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"-1", "10"})
+    public void prevStationCurrentBelowZeroAndLargerMax(int currentStation) {
+        Radio radio = new Radio();
+
+        int expected = 9;
+
+        int actual = radio.prevStation(currentStation);
+        assertEquals(expected, actual);
+    }
+
     @Test
     public void nextStationAfterLast() {
         Radio radio = new Radio();
@@ -63,7 +85,7 @@ class RadioTest {
     }
 
     @Test
-    public void prevStationAfterLeast() {
+    public void prevStationAfterFirst() {
         Radio radio = new Radio();
 
         int currentStation = 0;
