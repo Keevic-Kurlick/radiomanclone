@@ -50,7 +50,6 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
-
     @ParameterizedTest
     @CsvSource(value = {"-1", "10"})
     public void nextStationCurrentBelowZeroAndLargerMax(int currentStation) {
