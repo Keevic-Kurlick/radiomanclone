@@ -7,6 +7,71 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
+    @Test
+    public void setAmountOfStationsIfBelowZero() {
+        Radio radio = new Radio();
+        radio.setAmountOfStations(-1);
+
+        int expected = 10;
+        int actual = radio.getAmountOfStations();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setAmountOfStationsIfEqualOrAboveZero() {
+        Radio radio = new Radio();
+        radio.setAmountOfStations(0);
+
+        int expected = 0;
+        int actual = radio.getAmountOfStations();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setMinVolumeIfBelowZero() {
+        Radio radio = new Radio();
+        radio.setMinVolume(-1);
+
+        int expected = 0;
+        int actual = radio.getMinVolume();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setMinVolumeIfEqualOrBelowZero() {
+        Radio radio = new Radio();
+        radio.setMinVolume(0);
+
+        int expected = 0;
+        int actual = radio.getMinVolume();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setMaxVolumeIfBelowZero() {
+        Radio radio = new Radio();
+        radio.setMaxVolume(-1);
+
+        int expected = 100;
+        int actual = radio.getMaxVolume();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setMaxVolumeIfEqualOrAboveZero() {
+        Radio radio = new Radio();
+        radio.setMaxVolume(0);
+
+        int expected = 0;
+        int actual = radio.getMaxVolume();
+
+        assertEquals(expected, actual);
+    }
 
     @ParameterizedTest
     @CsvSource(value = {"0", "1", "2", "3"})
