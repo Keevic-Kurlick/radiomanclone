@@ -1,8 +1,34 @@
 package ru.netology.radioman;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
 public class Radio {
     private int currentStation;
     private int currentVolume;
+    private int firstStation;
+    private int amountOfStations = 10;
+    private int minVolume;
+    private int maxVolume = 100;
+
+    public Radio(int amountOfStations) {
+        setAmountOfStations(amountOfStations);
+        this.amountOfStations = getAmountOfStations();
+    }
+
+    public int getAmountOfStations() {
+        return amountOfStations;
+    }
+
+    public void setAmountOfStations(int amountOfStations) {
+        if (amountOfStations < 0) {
+            return;
+        } else {
+            this.amountOfStations = amountOfStations;
+        }
+    }
 
     public int getCurrentStation() {
         return currentStation;
@@ -12,36 +38,48 @@ public class Radio {
         return currentVolume;
     }
 
-    public void setMaxVolume() {
-        currentVolume = 10;
+    public int getMaxVolume() {
+        return maxVolume;
     }
 
-    public void setMinVolume() {
-        currentVolume = 0;
+    public int getMinVolume() {
+        return minVolume;
+    }
+
+    public int getFirstStation() {
+        return firstStation;
+    }
+
+    public void setCurrentMaxVolume() {
+        currentVolume = getMaxVolume();
+    }
+
+    public void setCurrentMinVolume() {
+        currentVolume = getMinVolume();
     }
 
     public void setFirstStation() {
-        currentStation = 0;
+        currentStation = firstStation;
     }
 
     public void setLastStation() {
-        currentStation = 9;
+        currentStation = amountOfStations;
     }
 
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume > 10) {
-            setMaxVolume();
-        } else if (currentVolume < 0) {
-            setMinVolume();
+        if (currentVolume > getMaxVolume()) {
+            setCurrentMaxVolume();
+        } else if (currentVolume < getMinVolume()) {
+            setCurrentMinVolume();
         } else {
             this.currentVolume = currentVolume;
         }
     }
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation > 9) {
+        if (currentStation > getAmountOfStations()) {
             setFirstStation();
-        } else if (currentStation < 0) {
+        } else if (currentStation < getFirstStation()) {
             setLastStation();
         } else {
             this.currentStation = currentStation;
