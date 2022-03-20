@@ -27,6 +27,7 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSetVolumeIfMax() {
         Radio radio = new Radio();
@@ -92,6 +93,7 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSetStationIfMax() {
         Radio radio = new Radio();
@@ -102,6 +104,7 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSetStationIfNormalParam() {
         Radio radio = new Radio();
@@ -148,6 +151,7 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     public void prevStationCurrentBelowMin() {
         Radio radio = new Radio();
@@ -172,6 +176,7 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     public void prevStationAfterPreMin() {
         Radio radio = new Radio();

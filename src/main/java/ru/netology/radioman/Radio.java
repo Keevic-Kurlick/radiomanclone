@@ -28,7 +28,6 @@ public class Radio {
         currentStation = 9;
     }
 
-
     public void setCurrentVolume(int currentVolume) {
         if (currentVolume > 10) {
             setMaxVolume();
