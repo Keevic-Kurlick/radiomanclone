@@ -62,7 +62,11 @@ public class Radio {
     }
 
     public void setLastStation() {
-        currentStation = amountOfStations;
+        currentStation = amountOfStations - 1;
+    }
+
+    public int getLastStation() {
+        return amountOfStations - 1;
     }
 
     public void setCurrentVolume(int currentVolume) {
@@ -76,7 +80,7 @@ public class Radio {
     }
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation > getAmountOfStations()) {
+        if (currentStation > getLastStation()) {
             setFirstStation();
         } else if (currentStation < getFirstStation()) {
             setLastStation();

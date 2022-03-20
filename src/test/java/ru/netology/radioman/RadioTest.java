@@ -6,8 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
     private int maxVolume = 100;
-    private int maxStations = 10;
-    private Radio radio = new Radio(maxStations);
+    private int amountOfStaions = 10;
+    private int lastStation = amountOfStaions - 1;
+    private Radio radio = new Radio(amountOfStaions);
 
     @Test
     public void shouldSetStationsLessMin() {
@@ -93,7 +94,7 @@ class RadioTest {
     public void shouldSetStationIfUnderZero() {
         radio.setCurrentStation(-1);
 
-        int expected = maxStations;
+        int expected = lastStation;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
@@ -101,7 +102,7 @@ class RadioTest {
 
     @Test
     public void shouldSetStationIfAboveMax() {
-        radio.setCurrentStation(maxStations + 1);
+        radio.setCurrentStation(amountOfStaions + 1);
 
         int expected = 0;
         int actual = radio.getCurrentStation();
@@ -121,9 +122,9 @@ class RadioTest {
 
     @Test
     public void shouldSetStationIfMax() {
-        radio.setCurrentStation(maxStations);
+        radio.setCurrentStation(lastStation);
 
-        int expected = maxStations;
+        int expected = lastStation;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
@@ -152,7 +153,7 @@ class RadioTest {
 
     @Test
     public void nextStationCurrentMax() {
-        radio.setCurrentStation(maxStations);
+        radio.setCurrentStation(lastStation);
         radio.nextStation();
 
         int expected = 0;
@@ -163,7 +164,7 @@ class RadioTest {
 
     @Test
     public void nextStationCurrentAboveMax() {
-        radio.setCurrentStation(maxStations + 1);
+        radio.setCurrentStation(amountOfStaions + 1);
         radio.nextStation();
 
         int expected = 1;
@@ -177,7 +178,7 @@ class RadioTest {
         radio.setCurrentStation(-1);
         radio.prevStation();
 
-        int expected = maxStations - 1;
+        int expected = lastStation - 1;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
@@ -188,7 +189,7 @@ class RadioTest {
         radio.setCurrentStation(0);
         radio.prevStation();
 
-        int expected = maxStations;
+        int expected = lastStation;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
