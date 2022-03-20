@@ -1,10 +1,5 @@
 package ru.netology.radioman;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@Data
 public class Radio {
     private int currentStation;
     private int currentVolume;
@@ -12,6 +7,10 @@ public class Radio {
     private int amountOfStations = 10;
     private int minVolume;
     private int maxVolume = 100;
+
+    public Radio() {
+
+    }
 
     public Radio(int amountOfStations) {
         setAmountOfStations(amountOfStations);
@@ -100,5 +99,17 @@ public class Radio {
 
     public void decreaseVolume() {
         setCurrentVolume(currentVolume - 1);
+    }
+
+    public void setFirstStation(int firstStation) {
+        this.firstStation = firstStation;
+    }
+
+    public void setMinVolume(int minVolume) {
+        this.minVolume = minVolume;
+    }
+
+    public void setMaxVolume(int maxVolume) {
+        this.maxVolume = maxVolume;
     }
 }
