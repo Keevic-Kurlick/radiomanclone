@@ -33,8 +33,6 @@ public class Radio {
             setMaxVolume();
         } else if (currentVolume < 0) {
             setMinVolume();
-        } else {
-            this.currentVolume = currentVolume;
         }
     }
 
